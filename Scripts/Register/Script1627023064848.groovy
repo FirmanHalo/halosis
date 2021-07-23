@@ -16,6 +16,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 
 WebUI.openBrowser('https://stg.main.halosis.co.id/DhHnpW')
 
@@ -25,13 +26,41 @@ WebUI.click(findTestObject('Page_Toko1/Masuk'))
 
 WebUI.click(findTestObject('Page_Toko1/Daftar'), FailureHandling.STOP_ON_FAILURE)
 
-WebUI.setText(findTestObject('Page_Toko1/Nama Sesuai KTP'), 'angi')
+WebUI.setText(findTestObject('Page_Toko1/Nama Sesuai KTP'), 'aaa')
 
-WebUI.setText(findTestObject('Page_Toko1/Email'), 'firman@gmail.com')
+WebUI.setText(findTestObject('Page_Toko1/Email'), 'firman22@gmail.com')
 
 WebUI.setText(findTestObject('Page_Toko1/Password'), 'P@ssw0rd')
+
 
 WebUI.setText(findTestObject('Page_Toko1/Password Konfirmasi'), 'P@ssw0rd')
 
 WebUI.click(findTestObject('Page_Toko1/daftar 2'))
+
+WebUI.delay(3)
+
+String namaunvalid = WebUI.verifyTextPresent('Masukkan nama yang valid', false, FailureHandling.OPTIONAL)
+
+String emailkosong = WebUI.verifyTextPresent('*wajib diisi', false, FailureHandling.OPTIONAL)
+
+String emailunvalid = WebUI.verifyTextPresent('Format email tidak valid', false, FailureHandling.OPTIONAL)
+
+String passwordsalah = WebUI.verifyTextPresent('Masukkan minimal 8 karakter', false, FailureHandling.OPTIONAL)
+
+String passwordtidaksesuai = WebUI.verifyTextPresent('Konfirmasi password tidak sama', false, FailureHandling.OPTIONAL)
+
+if (namaunvalid == 'true') {
+    KeywordUtil.markFailed('Gagal')
+if (emailkosong == 'true') {
+	KeywordUtil.markFailed('Gagal')
+if (emailunvalid == 'true') {
+	KeywordUtil.markFailed('Gagal')
+if (passwordsalah == 'true') {
+	KeywordUtil.markFailed('Gagal')
+if (namaunvalid == 'true') {
+	passwordtidaksesuai.markFailed('Gagal')
+	
+} else {
+    KeywordUtil.markPassed('Login Berhasil')
+}}}}}
 
