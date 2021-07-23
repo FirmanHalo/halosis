@@ -26,14 +26,13 @@ WebUI.click(findTestObject('Page_Toko1/Masuk'))
 
 WebUI.click(findTestObject('Page_Toko1/Daftar'), FailureHandling.STOP_ON_FAILURE)
 
-WebUI.setText(findTestObject('Page_Toko1/Nama Sesuai KTP'), 'aaa')
+WebUI.setText(findTestObject('Page_Toko1/Nama Sesuai KTP'), nama)
 
-WebUI.setText(findTestObject('Page_Toko1/Email'), 'firman22@gmail.com')
+WebUI.setText(findTestObject('Page_Toko1/Email'), email)
 
-WebUI.setText(findTestObject('Page_Toko1/Password'), 'P@ssw0rd')
+WebUI.setText(findTestObject('Page_Toko1/Password'), password)
 
-
-WebUI.setText(findTestObject('Page_Toko1/Password Konfirmasi'), 'P@ssw0rd')
+WebUI.setText(findTestObject('Page_Toko1/Password Konfirmasi'), confpassword)
 
 WebUI.click(findTestObject('Page_Toko1/daftar 2'))
 
@@ -51,16 +50,35 @@ String passwordtidaksesuai = WebUI.verifyTextPresent('Konfirmasi password tidak 
 
 if (namaunvalid == 'true') {
     KeywordUtil.markFailed('Gagal')
-if (emailkosong == 'true') {
-	KeywordUtil.markFailed('Gagal')
-if (emailunvalid == 'true') {
-	KeywordUtil.markFailed('Gagal')
-if (passwordsalah == 'true') {
-	KeywordUtil.markFailed('Gagal')
-if (namaunvalid == 'true') {
-	passwordtidaksesuai.markFailed('Gagal')
-	
-} else {
-    KeywordUtil.markPassed('Login Berhasil')
-}}}}}
 
+     } else {
+                    KeywordUtil.markPassed('Login Berhasil')
+                }
+				if (emailkosong == 'true') {
+					KeywordUtil.markFailed('Gagal')
+				
+				} else {
+							   KeywordUtil.markPassed('Login Berhasil')
+						   }
+			
+					if (emailunvalid == 'true') {
+						KeywordUtil.markFailed('Gagal')
+					
+					} else {
+								   KeywordUtil.markPassed('Login Berhasil')
+							   }
+			
+						if (passwordsalah == 'true') {
+							KeywordUtil.markFailed('Gagal')
+						
+						} else {
+									   KeywordUtil.markPassed('Login Berhasil')
+								   }
+			
+							if (namaunvalid == 'true') {
+								passwordtidaksesuai.markFailed('Gagal')
+							
+							} else {
+										   KeywordUtil.markPassed('Login Berhasil')
+									   }
+			
